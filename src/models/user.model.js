@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 const userSchema = mongoose.Schema({
-    userName:{
+    username:{
         type:String,
         required:true,
         lowercase:true,
@@ -58,9 +58,9 @@ userSchema.methods.generateAccessToken = function(){
 userSchema.methods.generateRefreshToken = async function(){
     return jwt.sign(
         {
-        _id:this._id,
+            _id:this._id,
         },
-        process.env.REFRESH_TOKEN_ACCESS,
+        process.env.REFRESH_TOKEN_SECRET,
         {
             expiresIn:process.env.REFRESH_TOKEN_EXPIRY
         }   

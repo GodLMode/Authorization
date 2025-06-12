@@ -1,1 +1,1 @@
-DB_NAME = "authorization"
+export const DB_NAME = "authorization"
